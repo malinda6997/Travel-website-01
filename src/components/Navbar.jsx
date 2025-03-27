@@ -4,21 +4,17 @@ import {assets} from '../assets/assets'
 
 const Navbar = () => {
   return (
-    <div className='absolute top-0 left-0 w-full z-10'>
-        <div className='container mx-auto flex justify-between items-center py-4 px-20 md:px-20 lg:px:-32'>
+    <div className='absolute top-0 left-0 z-10 w-full'>
+        <div className='container flex items-center justify-between px-20 py-4 mx-auto md:px-20 lg:px:-32'>
             <img src={assets.logo} alt="Logo" />
-            <ul className='hidden md:flex gap-7 text-white'>
-                <a href="#Header" className='cursor-pointer
-                 hover:text-gray-400'>Home</a>
-                 <a href="#Header" className='cursor-pointer
-                 hover:text-gray-400'>About</a>
-                 <a href="#Header" className='cursor-pointer
-                 hover:text-gray-400'>Projects</a>
-                 <a href="#Header" className='cursor-pointer
-                 hover:text-gray-400'>Testimonials</a>
+            <ul className='hidden text-white md:flex gap-7'>
+                <a href="#Header" className='cursor-pointer hover:text-gray-400'>Home</a>
+                 <a href="#Header" className='cursor-pointer hover:text-gray-400'>About</a>
+                 <a href="#Header" className='cursor-pointer hover:text-gray-400'>Projects</a>
+                 <a href="#Header" className='cursor-pointer hover:text-gray-400'>Testimonials</a>
             </ul>
-            <button className='hidden md:block bg-white 
-            px-8 py-2 rounded-full '>Sign up</button>
+            <button className='hidden px-8 py-2 bg-white rounded-full md:block '>Sign up</button>
+            <img className='md:hidden w-7' src="{assets.menu_icon}" alt="" />
         </div>
       
     </div>
