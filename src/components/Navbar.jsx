@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { assets } from '../assets/assets';
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  useEffect(() => {
+    if (showMobileMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    }
+  }, [showMobileMenu]);
 
   return (
     <div className='absolute top-0 left-0 z-10 w-full'>
@@ -39,10 +50,10 @@ const Navbar = () => {
           />
         </div>
         <ul className='flex flex-col items-center gap-4 mt-10 text-lg font-medium'>
-          <a className='px-4 py-2 rounded-full' href="#Header">Home</a>
-          <a className='px-4 py-2 rounded-full' href="#About">About</a>
-          <a className='px-4 py-2 rounded-full' href="#Projects">Projects</a>
-          <a className='px-4 py-2 rounded-full' href="#Testimonials">Testimonials</a>
+          <a onClick={() => setShowMobileMenu(false)} className='px-4 py-2 rounded-full' href="#Header">Home</a>
+          <a onClick={() => setShowMobileMenu(false)} className='px-4 py-2 rounded-full' href="#About">About</a>
+          <a onClick={() => setShowMobileMenu(false)} className='px-4 py-2 rounded-full' href="#Projects">Projects</a>
+          <a onClick={() => setShowMobileMenu(false)} className='px-4 py-2 rounded-full' href="#Testimonials">Testimonials</a>
         </ul>
       </div>
     </div>
