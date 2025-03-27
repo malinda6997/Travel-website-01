@@ -1,46 +1,52 @@
-import React , {useState} from 'react'
-import {assets} from '../assets/assets'
-
-
-
+import React, { useState } from 'react';
+import { assets } from '../assets/assets';
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
   return (
     <div className='absolute top-0 left-0 z-10 w-full'>
-        <div className='container flex items-center justify-between px-20 py-4 mx-auto md:px-20 lg:px:-32'>
-            <img src={assets.logo} alt="Logo" />
-            <ul className='hidden text-white md:flex gap-7'>
-                <a href="#Header" className='cursor-pointer hover:text-gray-400'>Home</a>
-                 <a href="#Header" className='cursor-pointer hover:text-gray-400'>About</a>
-                 <a href="#Header" className='cursor-pointer hover:text-gray-400'>Projects</a>
-                 <a href="#Header" className='cursor-pointer hover:text-gray-400'>Testimonials</a>
-            </ul>
-            <button className='hidden px-8 py-2 bg-white rounded-full md:block '>Sign up</button>
-            <img onClick={()=> setShowMobileMenu(true)} className='cursor-pointer w-7 md:hidden' src={assets.menu_icon} alt="menu" />
-        </div>
-        {/* Mobile menu */}
-        <div className={`md:hidden ${showMobileMenu ? 'fixed w-full' : 'h-0 w-0'}  top-0 bottom-0 right-0  overflow-hidden transition-all bg-white `}>
+      <div className='container flex items-center justify-between px-6 py-4 mx-auto md:px-20 lg:px-32'>
+        <img src={assets.logo} alt="Logo" />
+        
+        {/* Desktop Menu */}
+        <ul className='hidden text-white md:flex gap-7'>
+          <a href="#Header" className='cursor-pointer hover:text-gray-400'>Home</a>
+          <a href="#Header" className='cursor-pointer hover:text-gray-400'>About</a>
+          <a href="#Header" className='cursor-pointer hover:text-gray-400'>Projects</a>
+          <a href="#Header" className='cursor-pointer hover:text-gray-400'>Testimonials</a>
+        </ul>
 
-          <div className='flex justify-end p-5 cursor-pointer'>
-            <img onClick={()=> setShowMobileMenu(false)} className='w-6' src={assets.cross_icon} alt="close" />
-          </div>
-          <ul className='flex flex-col items-center gap-2 px-5 mt-5 text-lg font-medium'>
-            <a className='inline-block px-4 rounded-full py2'
-             href="">Home</a>
-             <a className='inline-block px-4 rounded-full py2'
-             href="">About</a>
-             <a className='inline-block px-4 rounded-full py2'
-             href="">Projects</a>
-             <a className='inline-block px-4 rounded-full py2'
-             href="">Testimonials</a>
-          </ul>
+        <button className='hidden px-4 py-2 bg-white rounded-full md:block'>Sign up</button>
+
+        {/* 🔹 Mobile Menu Icon (Moved to Right) */}
+        <img 
+          onClick={() => setShowMobileMenu(true)} 
+          className='ml-auto cursor-pointer w-7 md:hidden' 
+          src={assets.menu_icon} 
+          alt="menu" 
+        />
+      </div>
+
+      {/* 🔹 Mobile Menu */}
+      <div className={`fixed top-0 right-0 w-full h-screen bg-white transition-all ${showMobileMenu ? 'block' : 'hidden'}`}>
+        <div className='flex justify-end p-5 cursor-pointer'>
+          <img 
+            onClick={() => setShowMobileMenu(false)} 
+            className='w-6' 
+            src={assets.cross_icon} 
+            alt="close" 
+          />
         </div>
-      
+        <ul className='flex flex-col items-center gap-4 mt-10 text-lg font-medium'>
+          <a className='px-4 py-2 rounded-full' href="#Header">Home</a>
+          <a className='px-4 py-2 rounded-full' href="#About">About</a>
+          <a className='px-4 py-2 rounded-full' href="#Projects">Projects</a>
+          <a className='px-4 py-2 rounded-full' href="#Testimonials">Testimonials</a>
+        </ul>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
-
-console.log(assets.menu_icon);
+export default Navbar;
